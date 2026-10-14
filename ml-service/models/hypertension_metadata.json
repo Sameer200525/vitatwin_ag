@@ -1,0 +1,114 @@
+{
+  "disease": "Hypertension",
+  "model_version": "1.0.0",
+  "selected_algorithm": "LogisticRegression",
+  "features": {
+    "numeric": [
+      "Age",
+      "BMI",
+      "Systolic_BP",
+      "Diastolic_BP",
+      "Heart_Rate",
+      "Glucose",
+      "Cholesterol",
+      "Sleep_Duration"
+    ],
+    "categorical": [
+      "Smoking_Status",
+      "Alcohol_Intake",
+      "Physical_Activity_Level",
+      "Family_History",
+      "Stress_Level",
+      "Gender"
+    ],
+    "all": [
+      "Age",
+      "BMI",
+      "Systolic_BP",
+      "Diastolic_BP",
+      "Heart_Rate",
+      "Glucose",
+      "Cholesterol",
+      "Sleep_Duration",
+      "Smoking_Status",
+      "Alcohol_Intake",
+      "Physical_Activity_Level",
+      "Family_History",
+      "Stress_Level",
+      "Gender"
+    ]
+  },
+  "target": "target (0: Low/Normal Risk, 1: High Risk)",
+  "train_samples": 40000,
+  "test_samples": 10000,
+  "evaluation_metrics": {
+    "accuracy": 0.5026,
+    "precision": 0.5025,
+    "recall": 0.5226,
+    "f1_score": 0.5124,
+    "roc_auc": 0.5052,
+    "confusion_matrix": [
+      [
+        2413,
+        2587
+      ],
+      [
+        2387,
+        2613
+      ]
+    ]
+  },
+  "baseline_comparison": {
+    "LogisticRegression": {
+      "accuracy": 0.5026,
+      "precision": 0.5025,
+      "recall": 0.5226,
+      "f1_score": 0.5124,
+      "roc_auc": 0.5052,
+      "confusion_matrix": [
+        [
+          2413,
+          2587
+        ],
+        [
+          2387,
+          2613
+        ]
+      ]
+    },
+    "DecisionTree": {
+      "accuracy": 0.4966,
+      "precision": 0.4955,
+      "recall": 0.3768,
+      "f1_score": 0.4281,
+      "roc_auc": 0.491,
+      "confusion_matrix": [
+        [
+          3082,
+          1918
+        ],
+        [
+          3116,
+          1884
+        ]
+      ]
+    },
+    "RandomForest": {
+      "accuracy": 0.4949,
+      "precision": 0.4952,
+      "recall": 0.5248,
+      "f1_score": 0.5096,
+      "roc_auc": 0.4949,
+      "confusion_matrix": [
+        [
+          2325,
+          2675
+        ],
+        [
+          2376,
+          2624
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "disease": "Chronic Kidney Disease",
+  "model_version": "1.0.0",
+  "selected_algorithm": "RandomForest",
+  "features": {
+    "numeric": [
+      "age",
+      "bp",
+      "sg",
+      "al",
+      "su",
+      "bgr",
+      "bu",
+      "sc",
+      "sod",
+      "pot",
+      "hemo",
+      "pcv",
+      "wc",
+      "rc"
+    ],
+    "categorical": [
+      "rbc",
+      "pc",
+      "pcc",
+      "ba",
+      "htn",
+      "dm",
+      "cad",
+      "appet",
+      "pe",
+      "ane"
+    ],
+    "all": [
+      "age",
+      "bp",
+      "sg",
+      "al",
+      "su",
+      "bgr",
+      "bu",
+      "sc",
+      "sod",
+      "pot",
+      "hemo",
+      "pcv",
+      "wc",
+      "rc",
+      "rbc",
+      "pc",
+      "pcc",
+      "ba",
+      "htn",
+      "dm",
+      "cad",
+      "appet",
+      "pe",
+      "ane"
+    ]
+  },
+  "target": "classification (0: No CKD, 1: CKD Present)",
+  "train_samples": 320,
+  "test_samples": 80,
+  "evaluation_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": [
+      [
+        30,
+        0
+      ],
+      [
+        0,
+        50
+      ]
+    ]
+  },
+  "baseline_comparison": {
+    "LogisticRegression": {
+      "accuracy": 0.975,
+      "precision": 1.0,
+      "recall": 0.96,
+      "f1_score": 0.9796,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          30,
+          0
+        ],
+        [
+          2,
+          48
+        ]
+      ]
+    },
+    "DecisionTree": {
+      "accuracy": 0.9625,
+      "precision": 1.0,
+      "recall": 0.94,
+      "f1_score": 0.9691,
+      "roc_auc": 0.989,
+      "confusion_matrix": [
+        [
+          30,
+          0
+        ],
+        [
+          3,
+          47
+        ]
+      ]
+    },
+    "RandomForest": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          30,
+          0
+        ],
+        [
+          0,
+          50
+        ]
+      ]
+    }
+  }
+}

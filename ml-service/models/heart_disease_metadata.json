@@ -1,0 +1,108 @@
+{
+  "disease": "Heart Disease",
+  "model_version": "1.0.0",
+  "selected_algorithm": "RandomForest",
+  "features": {
+    "numeric": [
+      "age",
+      "trestbps",
+      "chol",
+      "thalch",
+      "oldpeak"
+    ],
+    "categorical": [
+      "sex",
+      "cp",
+      "fbs",
+      "restecg",
+      "exang",
+      "slope"
+    ],
+    "all": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalch",
+      "exang",
+      "oldpeak",
+      "slope"
+    ]
+  },
+  "target": "target (0: Low/No Risk, 1: High Risk)",
+  "train_samples": 736,
+  "test_samples": 184,
+  "evaluation_metrics": {
+    "accuracy": 0.837,
+    "precision": 0.8396,
+    "recall": 0.8725,
+    "f1_score": 0.8558,
+    "roc_auc": 0.9242,
+    "confusion_matrix": [
+      [
+        65,
+        17
+      ],
+      [
+        13,
+        89
+      ]
+    ]
+  },
+  "baseline_comparison": {
+    "LogisticRegression": {
+      "accuracy": 0.8315,
+      "precision": 0.8447,
+      "recall": 0.8529,
+      "f1_score": 0.8488,
+      "roc_auc": 0.9038,
+      "confusion_matrix": [
+        [
+          66,
+          16
+        ],
+        [
+          15,
+          87
+        ]
+      ]
+    },
+    "DecisionTree": {
+      "accuracy": 0.8043,
+      "precision": 0.83,
+      "recall": 0.8137,
+      "f1_score": 0.8218,
+      "roc_auc": 0.8306,
+      "confusion_matrix": [
+        [
+          65,
+          17
+        ],
+        [
+          19,
+          83
+        ]
+      ]
+    },
+    "RandomForest": {
+      "accuracy": 0.837,
+      "precision": 0.8396,
+      "recall": 0.8725,
+      "f1_score": 0.8558,
+      "roc_auc": 0.9242,
+      "confusion_matrix": [
+        [
+          65,
+          17
+        ],
+        [
+          13,
+          89
+        ]
+      ]
+    }
+  }
+}

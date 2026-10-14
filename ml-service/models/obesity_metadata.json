@@ -1,0 +1,343 @@
+{
+  "disease": "Obesity",
+  "model_version": "1.0.0",
+  "selected_algorithm": "RandomForest",
+  "classes": [
+    "Insufficient_Weight",
+    "Normal_Weight",
+    "Obesity_Type_I",
+    "Obesity_Type_II",
+    "Obesity_Type_III",
+    "Overweight_Level_I",
+    "Overweight_Level_II"
+  ],
+  "features": {
+    "numeric": [
+      "Age",
+      "Height",
+      "Weight",
+      "FCVC",
+      "NCP",
+      "CH2O",
+      "FAF",
+      "TUE"
+    ],
+    "categorical": [
+      "Gender",
+      "family_history_with_overweight",
+      "FAVC",
+      "CAEC",
+      "SMOKE",
+      "SCC",
+      "CALC",
+      "MTRANS"
+    ],
+    "all": [
+      "Gender",
+      "Age",
+      "Height",
+      "Weight",
+      "family_history_with_overweight",
+      "FAVC",
+      "FCVC",
+      "NCP",
+      "CAEC",
+      "SMOKE",
+      "CH2O",
+      "SCC",
+      "FAF",
+      "TUE",
+      "CALC",
+      "MTRANS"
+    ]
+  },
+  "target": "NObeyesdad (Multi-class weight levels)",
+  "train_samples": 1688,
+  "test_samples": 423,
+  "evaluation_metrics": {
+    "accuracy": 0.9362,
+    "precision_macro": 0.9418,
+    "recall_macro": 0.9344,
+    "f1_macro": 0.9364,
+    "confusion_matrix": [
+      [
+        50,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        53,
+        0,
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        67,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        59,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        64,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        1,
+        0,
+        0,
+        49,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        0,
+        0,
+        0,
+        54
+      ]
+    ]
+  },
+  "baseline_comparison": {
+    "LogisticRegression": {
+      "accuracy": 0.8747,
+      "precision_macro": 0.8707,
+      "recall_macro": 0.8724,
+      "f1_macro": 0.8708,
+      "confusion_matrix": [
+        [
+          54,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          43,
+          0,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          64,
+          3,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          2,
+          58,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0,
+          43,
+          7
+        ],
+        [
+          0,
+          2,
+          7,
+          0,
+          0,
+          5,
+          44
+        ]
+      ]
+    },
+    "DecisionTree": {
+      "accuracy": 0.9149,
+      "precision_macro": 0.9163,
+      "recall_macro": 0.9126,
+      "f1_macro": 0.9137,
+      "confusion_matrix": [
+        [
+          47,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          50,
+          0,
+          0,
+          0,
+          6,
+          1
+        ],
+        [
+          0,
+          0,
+          65,
+          1,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          2,
+          58,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0,
+          50,
+          3
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          1,
+          53
+        ]
+      ]
+    },
+    "RandomForest": {
+      "accuracy": 0.9362,
+      "precision_macro": 0.9418,
+      "recall_macro": 0.9344,
+      "f1_macro": 0.9364,
+      "confusion_matrix": [
+        [
+          50,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          53,
+          0,
+          0,
+          0,
+          4,
+          1
+        ],
+        [
+          0,
+          2,
+          67,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          59,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          1,
+          0,
+          0,
+          49,
+          0
+        ],
+        [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          54
+        ]
+      ]
+    }
+  }
+}

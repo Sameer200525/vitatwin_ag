@@ -1,0 +1,927 @@
+{
+  "heart": {
+    "disease": "Heart Disease",
+    "model_version": "1.0.0",
+    "selected_algorithm": "RandomForest",
+    "features": {
+      "numeric": [
+        "age",
+        "trestbps",
+        "chol",
+        "thalch",
+        "oldpeak"
+      ],
+      "categorical": [
+        "sex",
+        "cp",
+        "fbs",
+        "restecg",
+        "exang",
+        "slope"
+      ],
+      "all": [
+        "age",
+        "sex",
+        "cp",
+        "trestbps",
+        "chol",
+        "fbs",
+        "restecg",
+        "thalch",
+        "exang",
+        "oldpeak",
+        "slope"
+      ]
+    },
+    "target": "target (0: Low/No Risk, 1: High Risk)",
+    "train_samples": 736,
+    "test_samples": 184,
+    "evaluation_metrics": {
+      "accuracy": 0.837,
+      "precision": 0.8396,
+      "recall": 0.8725,
+      "f1_score": 0.8558,
+      "roc_auc": 0.9242,
+      "confusion_matrix": [
+        [
+          65,
+          17
+        ],
+        [
+          13,
+          89
+        ]
+      ]
+    },
+    "baseline_comparison": {
+      "LogisticRegression": {
+        "accuracy": 0.8315,
+        "precision": 0.8447,
+        "recall": 0.8529,
+        "f1_score": 0.8488,
+        "roc_auc": 0.9038,
+        "confusion_matrix": [
+          [
+            66,
+            16
+          ],
+          [
+            15,
+            87
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "accuracy": 0.8043,
+        "precision": 0.83,
+        "recall": 0.8137,
+        "f1_score": 0.8218,
+        "roc_auc": 0.8306,
+        "confusion_matrix": [
+          [
+            65,
+            17
+          ],
+          [
+            19,
+            83
+          ]
+        ]
+      },
+      "RandomForest": {
+        "accuracy": 0.837,
+        "precision": 0.8396,
+        "recall": 0.8725,
+        "f1_score": 0.8558,
+        "roc_auc": 0.9242,
+        "confusion_matrix": [
+          [
+            65,
+            17
+          ],
+          [
+            13,
+            89
+          ]
+        ]
+      }
+    }
+  },
+  "diabetes": {
+    "disease": "Diabetes",
+    "model_version": "1.0.0",
+    "selected_algorithm": "RandomForest",
+    "features": {
+      "numeric": [
+        "BMI",
+        "GenHlth",
+        "MentHlth",
+        "PhysHlth",
+        "Age"
+      ],
+      "binary": [
+        "HighBP",
+        "HighChol",
+        "CholCheck",
+        "Smoker",
+        "Stroke",
+        "HeartDiseaseorAttack",
+        "PhysActivity",
+        "Fruits",
+        "Veggies",
+        "HvyAlcoholConsump",
+        "DiffWalk",
+        "Sex"
+      ],
+      "all": [
+        "HighBP",
+        "HighChol",
+        "CholCheck",
+        "BMI",
+        "Smoker",
+        "Stroke",
+        "HeartDiseaseorAttack",
+        "PhysActivity",
+        "Fruits",
+        "Veggies",
+        "HvyAlcoholConsump",
+        "GenHlth",
+        "MentHlth",
+        "PhysHlth",
+        "DiffWalk",
+        "Sex",
+        "Age"
+      ]
+    },
+    "target": "target (0: Low/No Risk, 1: High Risk)",
+    "train_samples": 48000,
+    "test_samples": 12000,
+    "evaluation_metrics": {
+      "accuracy": 0.7362,
+      "precision": 0.7201,
+      "recall": 0.773,
+      "f1_score": 0.7456,
+      "roc_auc": 0.8123,
+      "confusion_matrix": [
+        [
+          4197,
+          1803
+        ],
+        [
+          1362,
+          4638
+        ]
+      ]
+    },
+    "baseline_comparison": {
+      "LogisticRegression": {
+        "accuracy": 0.7352,
+        "precision": 0.7244,
+        "recall": 0.7595,
+        "f1_score": 0.7415,
+        "roc_auc": 0.8115,
+        "confusion_matrix": [
+          [
+            4266,
+            1734
+          ],
+          [
+            1443,
+            4557
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "accuracy": 0.7225,
+        "precision": 0.7135,
+        "recall": 0.7437,
+        "f1_score": 0.7283,
+        "roc_auc": 0.7975,
+        "confusion_matrix": [
+          [
+            4208,
+            1792
+          ],
+          [
+            1538,
+            4462
+          ]
+        ]
+      },
+      "RandomForest": {
+        "accuracy": 0.7362,
+        "precision": 0.7201,
+        "recall": 0.773,
+        "f1_score": 0.7456,
+        "roc_auc": 0.8123,
+        "confusion_matrix": [
+          [
+            4197,
+            1803
+          ],
+          [
+            1362,
+            4638
+          ]
+        ]
+      }
+    }
+  },
+  "hypertension": {
+    "disease": "Hypertension",
+    "model_version": "1.0.0",
+    "selected_algorithm": "LogisticRegression",
+    "features": {
+      "numeric": [
+        "Age",
+        "BMI",
+        "Systolic_BP",
+        "Diastolic_BP",
+        "Heart_Rate",
+        "Glucose",
+        "Cholesterol",
+        "Sleep_Duration"
+      ],
+      "categorical": [
+        "Smoking_Status",
+        "Alcohol_Intake",
+        "Physical_Activity_Level",
+        "Family_History",
+        "Stress_Level",
+        "Gender"
+      ],
+      "all": [
+        "Age",
+        "BMI",
+        "Systolic_BP",
+        "Diastolic_BP",
+        "Heart_Rate",
+        "Glucose",
+        "Cholesterol",
+        "Sleep_Duration",
+        "Smoking_Status",
+        "Alcohol_Intake",
+        "Physical_Activity_Level",
+        "Family_History",
+        "Stress_Level",
+        "Gender"
+      ]
+    },
+    "target": "target (0: Low/Normal Risk, 1: High Risk)",
+    "train_samples": 40000,
+    "test_samples": 10000,
+    "evaluation_metrics": {
+      "accuracy": 0.5026,
+      "precision": 0.5025,
+      "recall": 0.5226,
+      "f1_score": 0.5124,
+      "roc_auc": 0.5052,
+      "confusion_matrix": [
+        [
+          2413,
+          2587
+        ],
+        [
+          2387,
+          2613
+        ]
+      ]
+    },
+    "baseline_comparison": {
+      "LogisticRegression": {
+        "accuracy": 0.5026,
+        "precision": 0.5025,
+        "recall": 0.5226,
+        "f1_score": 0.5124,
+        "roc_auc": 0.5052,
+        "confusion_matrix": [
+          [
+            2413,
+            2587
+          ],
+          [
+            2387,
+            2613
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "accuracy": 0.4966,
+        "precision": 0.4955,
+        "recall": 0.3768,
+        "f1_score": 0.4281,
+        "roc_auc": 0.491,
+        "confusion_matrix": [
+          [
+            3082,
+            1918
+          ],
+          [
+            3116,
+            1884
+          ]
+        ]
+      },
+      "RandomForest": {
+        "accuracy": 0.4949,
+        "precision": 0.4952,
+        "recall": 0.5248,
+        "f1_score": 0.5096,
+        "roc_auc": 0.4949,
+        "confusion_matrix": [
+          [
+            2325,
+            2675
+          ],
+          [
+            2376,
+            2624
+          ]
+        ]
+      }
+    }
+  },
+  "stroke": {
+    "disease": "Stroke",
+    "model_version": "1.0.0",
+    "selected_algorithm": "LogisticRegression",
+    "features": {
+      "numeric": [
+        "age",
+        "avg_glucose_level",
+        "bmi"
+      ],
+      "categorical": [
+        "gender",
+        "hypertension",
+        "heart_disease",
+        "ever_married",
+        "work_type",
+        "Residence_type",
+        "smoking_status"
+      ],
+      "all": [
+        "gender",
+        "age",
+        "hypertension",
+        "heart_disease",
+        "ever_married",
+        "work_type",
+        "Residence_type",
+        "avg_glucose_level",
+        "bmi",
+        "smoking_status"
+      ]
+    },
+    "target": "stroke (0: Low Risk, 1: High Risk)",
+    "train_samples": 4087,
+    "test_samples": 1022,
+    "evaluation_metrics": {
+      "accuracy": 0.7387,
+      "precision": 0.1347,
+      "recall": 0.8,
+      "f1_score": 0.2305,
+      "roc_auc": 0.8393,
+      "confusion_matrix": [
+        [
+          715,
+          257
+        ],
+        [
+          10,
+          40
+        ]
+      ]
+    },
+    "baseline_comparison": {
+      "LogisticRegression": {
+        "accuracy": 0.7387,
+        "precision": 0.1347,
+        "recall": 0.8,
+        "f1_score": 0.2305,
+        "roc_auc": 0.8393,
+        "confusion_matrix": [
+          [
+            715,
+            257
+          ],
+          [
+            10,
+            40
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "accuracy": 0.7387,
+        "precision": 0.1322,
+        "recall": 0.78,
+        "f1_score": 0.2261,
+        "roc_auc": 0.7986,
+        "confusion_matrix": [
+          [
+            716,
+            256
+          ],
+          [
+            11,
+            39
+          ]
+        ]
+      },
+      "RandomForest": {
+        "accuracy": 0.7436,
+        "precision": 0.1294,
+        "recall": 0.74,
+        "f1_score": 0.2202,
+        "roc_auc": 0.8149,
+        "confusion_matrix": [
+          [
+            723,
+            249
+          ],
+          [
+            13,
+            37
+          ]
+        ]
+      }
+    }
+  },
+  "kidney": {
+    "disease": "Chronic Kidney Disease",
+    "model_version": "1.0.0",
+    "selected_algorithm": "RandomForest",
+    "features": {
+      "numeric": [
+        "age",
+        "bp",
+        "sg",
+        "al",
+        "su",
+        "bgr",
+        "bu",
+        "sc",
+        "sod",
+        "pot",
+        "hemo",
+        "pcv",
+        "wc",
+        "rc"
+      ],
+      "categorical": [
+        "rbc",
+        "pc",
+        "pcc",
+        "ba",
+        "htn",
+        "dm",
+        "cad",
+        "appet",
+        "pe",
+        "ane"
+      ],
+      "all": [
+        "age",
+        "bp",
+        "sg",
+        "al",
+        "su",
+        "bgr",
+        "bu",
+        "sc",
+        "sod",
+        "pot",
+        "hemo",
+        "pcv",
+        "wc",
+        "rc",
+        "rbc",
+        "pc",
+        "pcc",
+        "ba",
+        "htn",
+        "dm",
+        "cad",
+        "appet",
+        "pe",
+        "ane"
+      ]
+    },
+    "target": "classification (0: No CKD, 1: CKD Present)",
+    "train_samples": 320,
+    "test_samples": 80,
+    "evaluation_metrics": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          30,
+          0
+        ],
+        [
+          0,
+          50
+        ]
+      ]
+    },
+    "baseline_comparison": {
+      "LogisticRegression": {
+        "accuracy": 0.975,
+        "precision": 1.0,
+        "recall": 0.96,
+        "f1_score": 0.9796,
+        "roc_auc": 1.0,
+        "confusion_matrix": [
+          [
+            30,
+            0
+          ],
+          [
+            2,
+            48
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "accuracy": 0.9625,
+        "precision": 1.0,
+        "recall": 0.94,
+        "f1_score": 0.9691,
+        "roc_auc": 0.989,
+        "confusion_matrix": [
+          [
+            30,
+            0
+          ],
+          [
+            3,
+            47
+          ]
+        ]
+      },
+      "RandomForest": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "roc_auc": 1.0,
+        "confusion_matrix": [
+          [
+            30,
+            0
+          ],
+          [
+            0,
+            50
+          ]
+        ]
+      }
+    }
+  },
+  "obesity": {
+    "disease": "Obesity",
+    "model_version": "1.0.0",
+    "selected_algorithm": "RandomForest",
+    "classes": [
+      "Insufficient_Weight",
+      "Normal_Weight",
+      "Obesity_Type_I",
+      "Obesity_Type_II",
+      "Obesity_Type_III",
+      "Overweight_Level_I",
+      "Overweight_Level_II"
+    ],
+    "features": {
+      "numeric": [
+        "Age",
+        "Height",
+        "Weight",
+        "FCVC",
+        "NCP",
+        "CH2O",
+        "FAF",
+        "TUE"
+      ],
+      "categorical": [
+        "Gender",
+        "family_history_with_overweight",
+        "FAVC",
+        "CAEC",
+        "SMOKE",
+        "SCC",
+        "CALC",
+        "MTRANS"
+      ],
+      "all": [
+        "Gender",
+        "Age",
+        "Height",
+        "Weight",
+        "family_history_with_overweight",
+        "FAVC",
+        "FCVC",
+        "NCP",
+        "CAEC",
+        "SMOKE",
+        "CH2O",
+        "SCC",
+        "FAF",
+        "TUE",
+        "CALC",
+        "MTRANS"
+      ]
+    },
+    "target": "NObeyesdad (Multi-class weight levels)",
+    "train_samples": 1688,
+    "test_samples": 423,
+    "evaluation_metrics": {
+      "accuracy": 0.9362,
+      "precision_macro": 0.9418,
+      "recall_macro": 0.9344,
+      "f1_macro": 0.9364,
+      "confusion_matrix": [
+        [
+          50,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          53,
+          0,
+          0,
+          0,
+          4,
+          1
+        ],
+        [
+          0,
+          2,
+          67,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          59,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          1,
+          0,
+          0,
+          49,
+          0
+        ],
+        [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          54
+        ]
+      ]
+    },
+    "baseline_comparison": {
+      "LogisticRegression": {
+        "accuracy": 0.8747,
+        "precision_macro": 0.8707,
+        "recall_macro": 0.8724,
+        "f1_macro": 0.8708,
+        "confusion_matrix": [
+          [
+            54,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            5,
+            43,
+            0,
+            0,
+            0,
+            10,
+            0
+          ],
+          [
+            0,
+            0,
+            64,
+            3,
+            0,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            2,
+            58,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            64,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            0,
+            0,
+            0,
+            43,
+            7
+          ],
+          [
+            0,
+            2,
+            7,
+            0,
+            0,
+            5,
+            44
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "accuracy": 0.9149,
+        "precision_macro": 0.9163,
+        "recall_macro": 0.9126,
+        "f1_macro": 0.9137,
+        "confusion_matrix": [
+          [
+            47,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            50,
+            0,
+            0,
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            0,
+            65,
+            1,
+            0,
+            0,
+            4
+          ],
+          [
+            0,
+            0,
+            2,
+            58,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            64,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0,
+            50,
+            3
+          ],
+          [
+            0,
+            0,
+            4,
+            0,
+            0,
+            1,
+            53
+          ]
+        ]
+      },
+      "RandomForest": {
+        "accuracy": 0.9362,
+        "precision_macro": 0.9418,
+        "recall_macro": 0.9344,
+        "f1_macro": 0.9364,
+        "confusion_matrix": [
+          [
+            50,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            53,
+            0,
+            0,
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            2,
+            67,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            59,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            64,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            1,
+            0,
+            0,
+            49,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0,
+            0,
+            0,
+            54
+          ]
+        ]
+      }
+    }
+  }
+}

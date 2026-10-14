@@ -1,0 +1,120 @@
+{
+  "disease": "Diabetes",
+  "model_version": "1.0.0",
+  "selected_algorithm": "RandomForest",
+  "features": {
+    "numeric": [
+      "BMI",
+      "GenHlth",
+      "MentHlth",
+      "PhysHlth",
+      "Age"
+    ],
+    "binary": [
+      "HighBP",
+      "HighChol",
+      "CholCheck",
+      "Smoker",
+      "Stroke",
+      "HeartDiseaseorAttack",
+      "PhysActivity",
+      "Fruits",
+      "Veggies",
+      "HvyAlcoholConsump",
+      "DiffWalk",
+      "Sex"
+    ],
+    "all": [
+      "HighBP",
+      "HighChol",
+      "CholCheck",
+      "BMI",
+      "Smoker",
+      "Stroke",
+      "HeartDiseaseorAttack",
+      "PhysActivity",
+      "Fruits",
+      "Veggies",
+      "HvyAlcoholConsump",
+      "GenHlth",
+      "MentHlth",
+      "PhysHlth",
+      "DiffWalk",
+      "Sex",
+      "Age"
+    ]
+  },
+  "target": "target (0: Low/No Risk, 1: High Risk)",
+  "train_samples": 48000,
+  "test_samples": 12000,
+  "evaluation_metrics": {
+    "accuracy": 0.7362,
+    "precision": 0.7201,
+    "recall": 0.773,
+    "f1_score": 0.7456,
+    "roc_auc": 0.8123,
+    "confusion_matrix": [
+      [
+        4197,
+        1803
+      ],
+      [
+        1362,
+        4638
+      ]
+    ]
+  },
+  "baseline_comparison": {
+    "LogisticRegression": {
+      "accuracy": 0.7352,
+      "precision": 0.7244,
+      "recall": 0.7595,
+      "f1_score": 0.7415,
+      "roc_auc": 0.8115,
+      "confusion_matrix": [
+        [
+          4266,
+          1734
+        ],
+        [
+          1443,
+          4557
+        ]
+      ]
+    },
+    "DecisionTree": {
+      "accuracy": 0.7225,
+      "precision": 0.7135,
+      "recall": 0.7437,
+      "f1_score": 0.7283,
+      "roc_auc": 0.7975,
+      "confusion_matrix": [
+        [
+          4208,
+          1792
+        ],
+        [
+          1538,
+          4462
+        ]
+      ]
+    },
+    "RandomForest": {
+      "accuracy": 0.7362,
+      "precision": 0.7201,
+      "recall": 0.773,
+      "f1_score": 0.7456,
+      "roc_auc": 0.8123,
+      "confusion_matrix": [
+        [
+          4197,
+          1803
+        ],
+        [
+          1362,
+          4638
+        ]
+      ]
+    }
+  }
+}

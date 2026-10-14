@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: vitatwin-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: vitatwin
+    volumes:
+      - mongo-data:/data/db
+
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    container_name: vitatwin-ml
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      HOST: 0.0.0.0
+    volumes:
+      - ./ml-service/models:/app/models
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: vitatwin-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGO_URI: mongodb://mongodb:27017/vitatwin
+      JWT_SECRET: super_secure_vitatwin_jwt_secret_key_prod_2026
+      CLIENT_URL: http://localhost:5173
+      ML_SERVICE_URL: http://ml-service:8000
+    depends_on:
+      - mongodb
+      - ml-service
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: vitatwin-frontend
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
