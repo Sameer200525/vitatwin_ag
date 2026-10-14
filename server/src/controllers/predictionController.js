@@ -110,11 +110,11 @@ const predictHypertension = async (req, res, next) => {
       Glucose: req.body.Glucose || profile?.bloodGlucose || 95,
       Cholesterol: req.body.Cholesterol || profile?.cholesterol || 190,
       Sleep_Duration: req.body.Sleep_Duration || profile?.sleepDurationHours || 7,
-      Smoking_Status: req.body.Smoking_Status || (profile?.smokingStatus === 'current' ? 'Current' : 'Non-Smoker'),
-      Alcohol_Intake: req.body.Alcohol_Intake || 'None',
+      Smoking_Status: req.body.Smoking_Status || (profile?.smokingStatus === 'current' ? 'Current' : 'Never'),
+      Alcohol_Intake: req.body.Alcohol_Intake ?? 0,
       Physical_Activity_Level: req.body.Physical_Activity_Level || 'Moderate',
       Family_History: req.body.Family_History || (profile?.medicalHistory?.familyHypertension ? 'Yes' : 'No'),
-      Stress_Level: req.body.Stress_Level || 'Moderate',
+      Stress_Level: req.body.Stress_Level ?? 5,
       Gender: req.body.Gender || profile?.gender || 'Male',
     };
 
@@ -250,33 +250,14 @@ const predictObesity = async (req, res, next) => {
 // 7. Unified Digital Twin Prediction (All 6 at once)
 const predictAll = async (req, res, next) => {
   try {
-    const profile = await HealthProfile.findOne({ userId: req.user.id });
-
-    const payload = {
-      age: req.body.age || profile?.age || 35,
-      gender: req.body.gender || profile?.gender || 'Male',
-      height_cm: req.body.height_cm || profile?.heightCm || 175,
-      weight_kg: req.body.weight_kg || profile?.weightKg || 70,
-      bmi: req.body.bmi || profile?.bmi,
-      systolic_bp: req.body.systolic_bp || profile?.systolicBP || 120,
-      diastolic_bp: req.body.diastolic_bp || profile?.diastolicBP || 80,
-      heart_rate: req.body.heart_rate || profile?.heartRate || 72,
-      glucose: req.body.glucose || profile?.bloodGlucose || 95,
-      cholesterol: req.body.cholesterol || profile?.cholesterol || 190,
-      sleep_duration: req.body.sleep_duration || profile?.sleepDurationHours || 7,
-      smoking_status: req.body.smoking_status || profile?.smokingStatus || 'non-smoker',
-      physical_activity: req.body.physical_activity || profile?.physicalActivity || 'moderate',
-      family_history_heart: req.body.family_history_heart || Boolean(profile?.medicalHistory?.familyHeartDisease),
-      family_history_diabetes: req.body.family_history_diabetes || Boolean(profile?.medicalHistory?.familyDiabetes),
-      family_history_hypertension: req.body.family_history_hypertension || Boolean(profile?.medicalHistory?.familyHypertension),
-    };
-
+    const payload = req.body || {};
     const results = await mlClient.predictAll(payload);
 
-    // Save all assessments asynchronously
-    const diseases = Object.keys(results);
-    for (const d of diseases) {
-      await recordAssessment(req.user.id, d, results[d], payload);
+    // Persist only actual predictions, never insufficient-data status objects.
+    for (const [disease, assessment] of Object.entries(results)) {
+      if (assessment.status === 'predicted' && assessment.result) {
+        await recordAssessment(req.user.id, disease, assessment.result, payload[disease]);
+      }
     }
 
     res.status(200).json({

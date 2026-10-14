@@ -161,7 +161,7 @@ export const DiseaseAssessmentPage: React.FC = () => {
 
           <p className="text-xs text-slate-500 leading-relaxed">
             {selectedDisease === 'all'
-              ? 'Automatically executes all 6 disease pipelines using your saved digital health twin profile.'
+              ? 'Runs a model only when all of its required model-specific inputs are explicitly provided. Missing inputs are listed instead of being assumed.'
               : 'Biomarkers are pre-populated from your saved health profile. Adjust parameters below or run immediate inference.'}
           </p>
 
@@ -279,10 +279,18 @@ export const DiseaseAssessmentPage: React.FC = () => {
                   return (
                     <div key={k} className="p-3.5 rounded-xl border border-slate-200 bg-slate-50/60">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-bold text-navy-900">{r.disease}</span>
-                        <span className="text-xs font-extrabold text-teal-700">{r.risk_percentage}%</span>
+                        <span className="text-xs font-bold text-navy-900">{r.result?.disease || k}</span>
+                        {r.status === 'predicted' ? (
+                          <span className="text-xs font-extrabold text-teal-700">{r.result.risk_percentage}%</span>
+                        ) : (
+                          <span className="text-[10px] font-bold text-amber-700">Insufficient data</span>
+                        )}
                       </div>
-                      <span className="text-[11px] text-slate-500 capitalize">{r.risk_level}</span>
+                      {r.status === 'predicted' ? (
+                        <span className="text-[11px] text-slate-500 capitalize">{r.result.risk_level}</span>
+                      ) : (
+                        <p className="text-[10px] text-slate-500">Missing: {r.missing_fields.join(', ')}</p>
+                      )}
                     </div>
                   );
                 })}

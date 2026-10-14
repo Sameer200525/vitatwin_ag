@@ -92,10 +92,10 @@ def test_hypertension_prediction():
         "Cholesterol": 220,
         "Sleep_Duration": 5.5,
         "Smoking_Status": "Current",
-        "Alcohol_Intake": "Moderate",
+        "Alcohol_Intake": 12.5,
         "Physical_Activity_Level": "Low",
         "Family_History": "Yes",
-        "Stress_Level": "High",
+        "Stress_Level": 8,
         "Gender": "Male",
     }
     response = client.post("/api/predict/hypertension", json=payload)
@@ -185,30 +185,40 @@ def test_obesity_prediction():
     assert "predicted_class" in data
 
 
-def test_unified_twin_prediction():
+def test_unified_twin_reports_insufficient_data_without_model_inputs():
+    response = client.post("/api/predict/all", json={})
+    assert response.status_code == 200
+    data = response.json()
+    assert set(data) == {"heart", "diabetes", "hypertension", "stroke", "kidney", "obesity"}
+    for assessment in data.values():
+        assert assessment["status"] == "insufficient_data"
+        assert assessment["missing_fields"]
+        assert "risk_percentage" not in assessment
+
+
+def test_unified_twin_predicts_only_fully_provided_model_inputs():
     payload = {
-        "age": 45,
-        "gender": "Male",
-        "height_cm": 178,
-        "weight_kg": 82,
-        "systolic_bp": 132,
-        "diastolic_bp": 84,
-        "heart_rate": 74,
-        "glucose": 105,
-        "cholesterol": 210,
-        "sleep_duration": 6.5,
-        "smoking_status": "non-smoker",
-        "physical_activity": "moderate",
-        "family_history_heart": True,
-        "family_history_diabetes": False,
-        "family_history_hypertension": True,
+        "hypertension": {
+            "Age": 58,
+            "BMI": 29.0,
+            "Systolic_BP": 145,
+            "Diastolic_BP": 92,
+            "Heart_Rate": 80,
+            "Glucose": 110,
+            "Cholesterol": 220,
+            "Sleep_Duration": 5.5,
+            "Smoking_Status": "Current",
+            "Alcohol_Intake": 12.5,
+            "Physical_Activity_Level": "Low",
+            "Family_History": "Yes",
+            "Stress_Level": 8,
+            "Gender": "Male",
+        }
     }
     response = client.post("/api/predict/all", json=payload)
     assert response.status_code == 200
     data = response.json()
-    assert "heart" in data
-    assert "diabetes" in data
-    assert "hypertension" in data
-    assert "stroke" in data
-    assert "kidney" in data
-    assert "obesity" in data
+    assert data["hypertension"]["status"] == "predicted"
+    assert "risk_percentage" in data["hypertension"]["result"]
+    for disease in {"heart", "diabetes", "stroke", "kidney", "obesity"}:
+        assert data[disease]["status"] == "insufficient_data"

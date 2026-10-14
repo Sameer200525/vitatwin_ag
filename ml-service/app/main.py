@@ -128,7 +128,7 @@ def api_predict_obesity(data: ObesityInput):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.post("/api/predict/all", response_model=Dict[str, RiskPredictionResult])
+@app.post("/api/predict/all", response_model=Dict[str, Any])
 def api_predict_all(data: UnifiedTwinAssessmentInput):
     try:
         return predict_all_from_twin(data)

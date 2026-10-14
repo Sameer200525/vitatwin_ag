@@ -62,11 +62,11 @@ class HypertensionInput(BaseModel):
     Glucose: float = Field(95.0, ge=50.0, le=400.0)
     Cholesterol: float = Field(190.0, ge=100.0, le=450.0)
     Sleep_Duration: float = Field(7.0, ge=2.0, le=16.0)
-    Smoking_Status: str = Field("Non-Smoker", description="'Non-Smoker', 'Former', 'Current'")
-    Alcohol_Intake: str = Field("None", description="'None', 'Moderate', 'High'")
+    Smoking_Status: str = Field("Never", description="'Never', 'Former', or 'Current'")
+    Alcohol_Intake: float = Field(0.0, ge=0.0, le=30.0, description="Dataset alcohol-intake value (0-30)")
     Physical_Activity_Level: str = Field("Moderate", description="'Low', 'Moderate', 'High'")
     Family_History: str = Field("No", description="'Yes' or 'No'")
-    Stress_Level: str = Field("Moderate", description="'Low', 'Moderate', 'High'")
+    Stress_Level: float = Field(5.0, ge=1.0, le=9.0, description="Dataset stress level (1-9)")
     Gender: str = Field("Male", description="'Male' or 'Female'")
 
 
@@ -134,20 +134,10 @@ class ObesityInput(BaseModel):
 
 # Unified Digital Twin Assessment Input
 class UnifiedTwinAssessmentInput(BaseModel):
-    # Core vitals & demographics
-    age: float = Field(..., ge=1, le=120)
-    gender: str = Field("Male")
-    height_cm: float = Field(175.0, ge=90.0, le=250.0)
-    weight_kg: float = Field(70.0, ge=25.0, le=250.0)
-    bmi: Optional[float] = None
-    systolic_bp: float = Field(120.0, ge=70, le=240)
-    diastolic_bp: float = Field(80.0, ge=40, le=150)
-    heart_rate: float = Field(72.0, ge=40, le=180)
-    glucose: float = Field(95.0, ge=50, le=400)
-    cholesterol: Optional[float] = Field(190.0, ge=80, le=500)
-    sleep_duration: float = Field(7.0, ge=2, le=16)
-    smoking_status: str = Field("non-smoker")
-    physical_activity: str = Field("moderate")
-    family_history_heart: bool = False
-    family_history_diabetes: bool = False
-    family_history_hypertension: bool = False
+    # Nested disease-specific inputs preserve provenance: omitted fields remain missing.
+    heart: Optional[HeartInput] = None
+    diabetes: Optional[DiabetesInput] = None
+    hypertension: Optional[HypertensionInput] = None
+    stroke: Optional[StrokeInput] = None
+    kidney: Optional[KidneyInput] = None
+    obesity: Optional[ObesityInput] = None

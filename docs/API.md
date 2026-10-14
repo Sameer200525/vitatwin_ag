@@ -24,7 +24,7 @@
 - `POST /kidney`: Chronic kidney disease risk.
 - `POST /stroke`: Cerebrovascular stroke risk.
 - `POST /obesity`: Multi-class obesity phenotype prediction.
-- `POST /all`: Unified batch screening running all 6 models.
+- `POST /all`: Unified batch screening. Supply model-specific input objects under `heart`, `diabetes`, `hypertension`, `stroke`, `kidney`, and/or `obesity`. A model runs only when every feature it requires is explicitly provided; otherwise its result is `{ "status": "insufficient_data", "missing_fields": [...] }`. Only completed predictions are saved to assessment history.
 - `GET /history`: Historical assessment records associated with the authenticated user.
 
 ## 5. Educational Recommendations (`/api/recommendations`)
