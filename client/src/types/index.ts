@@ -45,7 +45,16 @@ export type MeasurementType =
   | 'bmi'
   | 'sleep_duration'
   | 'activity'
-  | 'cholesterol';
+  | 'cholesterol'
+  | 'steps'
+  | 'smoking'
+  | 'alcohol_intake'
+  | 'water_intake'
+  | 'body_temperature'
+  | 'oxygen_saturation'
+  | 'stress_level'
+  | 'mood'
+  | 'calories_burned';
 
 export interface HealthMeasurement {
   _id: string;

@@ -55,6 +55,17 @@ export const MeasurementsPage: React.FC = () => {
     fetchMeasurements();
   }, [selectedType, startDate, endDate]);
 
+  const quickTrackingCards = [
+    { type: 'blood_pressure' as MeasurementType, label: 'Blood Pressure', unit: 'mmHg', icon: '❤️' },
+    { type: 'glucose' as MeasurementType, label: 'Glucose', unit: 'mg/dL', icon: '🩸' },
+    { type: 'heart_rate' as MeasurementType, label: 'Heart Rate', unit: 'bpm', icon: '💓' },
+    { type: 'weight' as MeasurementType, label: 'Weight', unit: 'kg', icon: '⚖️' },
+    { type: 'sleep_duration' as MeasurementType, label: 'Sleep', unit: 'hours', icon: '😴' },
+    { type: 'steps' as MeasurementType, label: 'Steps', unit: 'steps', icon: '👟' },
+    { type: 'smoking' as MeasurementType, label: 'Smoking', unit: 'cigarettes', icon: '🚬' },
+    { type: 'alcohol_intake' as MeasurementType, label: 'Alcohol', unit: 'drinks', icon: '🍷' },
+  ];
+
   const handleTypeSelection = (t: MeasurementType) => {
     setFormType(t);
     switch (t) {
@@ -84,6 +95,33 @@ export const MeasurementsPage: React.FC = () => {
         break;
       case 'cholesterol':
         setFormUnit('mg/dL');
+        break;
+      case 'steps':
+        setFormUnit('steps');
+        break;
+      case 'smoking':
+        setFormUnit('cigarettes');
+        break;
+      case 'alcohol_intake':
+        setFormUnit('drinks');
+        break;
+      case 'water_intake':
+        setFormUnit('L');
+        break;
+      case 'body_temperature':
+        setFormUnit('°C');
+        break;
+      case 'oxygen_saturation':
+        setFormUnit('%');
+        break;
+      case 'stress_level':
+        setFormUnit('/10');
+        break;
+      case 'mood':
+        setFormUnit('rating');
+        break;
+      case 'calories_burned':
+        setFormUnit('kcal');
         break;
     }
   };
@@ -210,6 +248,46 @@ export const MeasurementsPage: React.FC = () => {
         </div>
       )}
 
+      <div className="card-premium p-4 space-y-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 className="text-base font-bold text-navy-900">Daily Check-In</h2>
+            <p className="text-[11px] text-slate-500">Log the most important daily health markers in one place.</p>
+          </div>
+          <button
+            onClick={openAddModal}
+            className="inline-flex items-center space-x-2 px-3 py-2 rounded-xl text-[11px] font-semibold text-white bg-teal-600 hover:bg-teal-700"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>New Entry</span>
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+          {quickTrackingCards.map((item) => (
+            <button
+              key={item.type}
+              type="button"
+              onClick={() => {
+                setFormType(item.type);
+                setFormValue('');
+                setFormSecondary('');
+                setFormUnit(item.unit);
+                setFormNotes('');
+                setFormDate(new Date().toISOString().slice(0, 16));
+                setEditingItem(null);
+                setModalOpen(true);
+              }}
+              className="group rounded-2xl border border-slate-200 bg-slate-50/60 p-3 text-left transition-all hover:border-teal-300 hover:bg-teal-50/40"
+            >
+              <div className="text-lg mb-2">{item.icon}</div>
+              <div className="text-[11px] font-semibold text-slate-700">{item.label}</div>
+              <div className="mt-1 text-[10px] text-slate-500">{item.unit}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Filter Toolbar */}
       <div className="card-premium p-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-3">
@@ -233,6 +311,15 @@ export const MeasurementsPage: React.FC = () => {
             <option value="sleep_duration">Sleep Duration</option>
             <option value="activity">Physical Activity</option>
             <option value="cholesterol">Cholesterol</option>
+            <option value="steps">Daily Steps</option>
+            <option value="smoking">Smoking</option>
+            <option value="alcohol_intake">Alcohol Intake</option>
+            <option value="water_intake">Water Intake</option>
+            <option value="body_temperature">Body Temperature</option>
+            <option value="oxygen_saturation">Oxygen Saturation</option>
+            <option value="stress_level">Stress Level</option>
+            <option value="mood">Mood Score</option>
+            <option value="calories_burned">Calories Burned</option>
           </select>
         </div>
 
@@ -381,6 +468,15 @@ export const MeasurementsPage: React.FC = () => {
                   <option value="sleep_duration">Sleep Duration</option>
                   <option value="activity">Physical Activity</option>
                   <option value="cholesterol">Serum Cholesterol</option>
+                  <option value="steps">Daily Steps</option>
+                  <option value="smoking">Smoking (cigarettes)</option>
+                  <option value="alcohol_intake">Alcohol Intake (drinks)</option>
+                  <option value="water_intake">Water Intake</option>
+                  <option value="body_temperature">Body Temperature</option>
+                  <option value="oxygen_saturation">Oxygen Saturation</option>
+                  <option value="stress_level">Stress Level</option>
+                  <option value="mood">Mood Score</option>
+                  <option value="calories_burned">Calories Burned</option>
                 </select>
               </div>
 

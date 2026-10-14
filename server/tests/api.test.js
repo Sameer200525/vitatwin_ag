@@ -219,6 +219,33 @@ describe('VitaTwin Backend API Test Suite', () => {
     expect(res.body.twinSummary.latestVitals.bloodPressure).toBe('140/90 mmHg');
   });
 
+  test('15. Daily lifestyle measurements accept smoking and alcohol entries', async () => {
+    const smokeRes = await request(app)
+      .post('/api/measurements')
+      .set('Authorization', `Bearer ${userToken}`)
+      .send({
+        type: 'smoking',
+        value: 2,
+        unit: 'cigarettes',
+        notes: 'Two cigarettes after lunch',
+      });
+
+    const alcoholRes = await request(app)
+      .post('/api/measurements')
+      .set('Authorization', `Bearer ${userToken}`)
+      .send({
+        type: 'alcohol_intake',
+        value: 1,
+        unit: 'drinks',
+        notes: 'One glass of wine with dinner',
+      });
+
+    expect(smokeRes.statusCode).toBe(201);
+    expect(smokeRes.body.measurement.type).toBe('smoking');
+    expect(alcoholRes.statusCode).toBe(201);
+    expect(alcoholRes.body.measurement.type).toBe('alcohol_intake');
+  });
+
   test('14. Rule-Based Recommendations Generation', async () => {
     const res = await request(app)
       .get('/api/recommendations')
